@@ -21,8 +21,55 @@
 #include <stack>
 using namespace std;
 
-void test() {
+class HanoiTower {
+public:
+	HanoiTower() :
+		N(5) {
+	}
+	HanoiTower(int num) :
+		N(num) {
+	}
 
+	int getNumOfDisks() {
+		return N;
+	}
+	void placeDisks(int index);
+	void moveDisks(int num, int begin, int end);
+private:
+	int N; // # of disks
+	stack<int> rods[3];
+};
+
+void HanoiTower::placeDisks(int index) {
+	cout << "Rod " << index << ": |-";
+	for (int i = N; i > 0; --i) {
+		rods[index].push(i);
+		cout << i << "-";
+	}
+	cout << endl;
+}
+
+void HanoiTower::moveDisks(int num, int begin, int end) {
+	if (num <= 0)
+		return;
+	else if (num == 1) {
+		int movedDisk = rods[begin].top();
+		rods[begin].pop();
+		rods[end].push(movedDisk);
+		cout << "Move disk " << movedDisk << " from rod " << begin
+				<< " to rod " << end << endl;
+	} else {
+		moveDisks(num - 1, begin, 3 - begin - end);
+		moveDisks(1, begin, end);
+		moveDisks(num - 1, 3 - begin - end, end);
+	}
+}
+
+void test() {
+	HanoiTower ht;
+	ht.placeDisks(0);
+	cout << "[Move disks from rod 0 to rod 2]" << endl;
+	ht.moveDisks(ht.getNumOfDisks(), 0, 2);
 }
 
 #endif /* EX_3_4_H_ */

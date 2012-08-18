@@ -16,7 +16,7 @@
 #define EX_3_2_H_
 
 #include <iostream>
-#include "..\My Lib\MyStack.h"
+#include "../My Lib/MyStack.h"
 using namespace std;
 
 /*
