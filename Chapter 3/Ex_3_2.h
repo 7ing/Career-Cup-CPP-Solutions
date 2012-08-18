@@ -17,6 +17,10 @@
 #include "..\My Lib\MyStack.h"
 using namespace std;
 
+/*
+ * use an extra stack to store min value of current stack
+ * O(1) time for push/pop min, O(n) space
+ */
 template<class T>
 class MinStack: public MyLinkedListStack<T> {
 public:
