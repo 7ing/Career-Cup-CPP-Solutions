@@ -129,11 +129,16 @@ void SetOfStacks<T>::pop() {
 template<class T>
 void SetOfStacks<T>::popAt(int index) {
 	typename list<NewStack<T> >::iterator it = _stacks.begin();
+	cout<<"popAt("<<index<<"):";
 	while(index--) {
 		it++;
 	}
 	cout<<(*it).top()<<endl;
 	(*it).pop();
+	if((*it).empty()) {
+		_stacks.erase(it);
+		cout<<"Stack erased"<<endl;
+	}
 }
 
 void test() {
@@ -146,8 +151,14 @@ void test() {
 		set->pop();
 	}
 
-	cout<<"popAt(1): ";
+
 	set->popAt(1);
+	set->popAt(1);
+	set->popAt(1);
+	set->popAt(1);
+	set->popAt(1);
+	set->popAt(1);
+
 }
 
 #endif /* EX_3_3_H_ */
