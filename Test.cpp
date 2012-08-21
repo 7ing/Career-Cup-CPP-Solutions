@@ -9,15 +9,14 @@
  * include "Chapter X/Ex_X_Y.h" to test Exercise X.Y in Career Cup 4.0 Version
  */
 
-#include "Chapter 3/Ex_3_6.h"
-#include "My Lib/MyBST.h"
+#include "Chapter 4/Ex_4_1.h"
 #include <iostream>
 
 using namespace std;
 
 int main(int argc, char * argv[]) {
 
-//	test();
+	test();
 
 	return 0;
 }

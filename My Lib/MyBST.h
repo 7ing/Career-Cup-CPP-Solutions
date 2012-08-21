@@ -38,6 +38,9 @@ public:
 	bool isBST() {
 		return isBST(_root);
 	}
+	TreeNode<T> * getRoot() {
+		return _root;
+	}
 	void insert(const T & data) {
 		insert(_root, data);
 	}
@@ -118,10 +121,8 @@ template<class T>
 int MyBST<T>::height(TreeNode<T> * current_node) {
 	if (current_node == NULL)
 		return 0;
-	int left_height =
-			current_node->_left == NULL ? 0 : height(current_node->_left);
-	int right_height =
-			current_node->_right == NULL ? 0 : height(current_node->_right);
+	int left_height = height(current_node->_left);
+	int right_height = height(current_node->_right);
 	return left_height < right_height ? right_height + 1 : left_height + 1;
 }
 
