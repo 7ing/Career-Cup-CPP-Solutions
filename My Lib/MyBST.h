@@ -47,7 +47,9 @@ public:
 	TreeNode<T> * find(const T & data) {
 		return find(_root, data);
 	}
-	void addToTree(T *array, int length);
+	void addToTree(T *array, int from, int to) {
+		addToTree(NULL, &_root, array, from, to);
+	}
 
 private:
 	TreeNode<T> * _root;
@@ -56,12 +58,9 @@ private:
 	void insert(TreeNode<T> * tree_root, const T & data);
 	int height(TreeNode<T> * current_node);
 	TreeNode<T> * find(TreeNode<T> * tree_root, const T & data);
+	void addToTree(TreeNode<T> * parent, TreeNode<T> ** root, T * array,
+			int from, int to);
 };
-
-template<class T>
-void MyBST<T>::addToTree(T * array, int length) {
-
-}
 
 template<class T>
 void MyBST<T>::removeTree(TreeNode<T> * tree_root) {
@@ -92,24 +91,24 @@ bool MyBST<T>::isBST(TreeNode<T> * current_node) {
 template<class T>
 void MyBST<T>::insert(TreeNode<T> * tree_node, const T & data) {
 	if (!tree_node) {
-		TreeNode<T> node(data);
-		_root = &node;
+		TreeNode<T> * node = new TreeNode<T>(data);
+		_root = node;
 	} else {
 		if (data <= tree_node->_data) {
 			if (tree_node->_left)
 				insert(tree_node->_left, data);
 			else {
-				TreeNode<T> node(data);
-				tree_node->_left = &node;
-				node._parent = tree_node;
+				TreeNode<T> * node = new TreeNode<T>(data);
+				tree_node->_left = node;
+				node->_parent = tree_node;
 			}
 		} else {
 			if (tree_node->_right)
 				insert(tree_node->_right, data);
 			else {
-				TreeNode<T> node(data);
-				tree_node->_right = &node;
-				node._parent = tree_node;
+				TreeNode<T> * node = new TreeNode<T>(data);
+				tree_node->_right = node;
+				node->_parent = tree_node;
 			}
 		}
 	}
@@ -117,6 +116,8 @@ void MyBST<T>::insert(TreeNode<T> * tree_node, const T & data) {
 
 template<class T>
 int MyBST<T>::height(TreeNode<T> * current_node) {
+	if (current_node == NULL)
+		return 0;
 	int left_height =
 			current_node->_left == NULL ? 0 : height(current_node->_left);
 	int right_height =
@@ -134,6 +135,22 @@ TreeNode<T> * MyBST<T>::find(TreeNode<T> * tree_root, const T & data) {
 		return find(tree_root->_left, data);
 	else
 		return NULL;
+}
+
+template<class T>
+void MyBST<T>::addToTree(TreeNode<T> * parent, TreeNode<T> ** root, T * array,
+		int from, int to) {
+	if (from > to)
+		return;
+
+	TreeNode<T> *rt = new TreeNode<T>(array[(from + to) / 2]);
+	rt->_parent = parent;
+	*root = rt;
+
+	if (from < to) {
+		addToTree(rt, &(rt->_left), array, from, (from + to) / 2 - 1);
+		addToTree(rt, &(rt->_right), array, (from + to) / 2 + 1, to);
+	}
 }
 
 #endif /* MYBST_H_ */
