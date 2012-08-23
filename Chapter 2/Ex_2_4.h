@@ -18,7 +18,7 @@
 #define EX_2_4_H_
 
 #include <iostream>
-#include "..\My Lib\MyList.h"
+#include "../My Lib/MyList.h"
 using namespace std;
 
 typedef MySinglyLinkedList<int> myList;

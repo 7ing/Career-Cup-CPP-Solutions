@@ -43,7 +43,7 @@ bool is_unique_char_func_1(char * string) {
 }
 
 /*
- * 2nd method, using shifting scheme, O(n)time, O(1)space
+ * 2nd method, using bit shifting scheme, O(n)time, O(1)space
  * only for limited chars such as [0-9a-zA-Z]
  */
 bool is_unique_char_func_2(char * string) {

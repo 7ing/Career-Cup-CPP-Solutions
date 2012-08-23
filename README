@@ -1,0 +1,13 @@
+# Author: J. Liu
+# Email: mitkook@gmail.com
+
+Git: https://github.com/mitkook/Career-Cup-CPP-Solutions.wiki.git
+
+This project try to implement career cup 150 (ver. 4.0) exercises using C++. 
+
+IDE: Eclipse 
+Default Compiler: LinuxGCC , GNU's g++
+
+NOTE: Please configure your own "gcc include" path before compiling this project. 
+
+It also provides several well-known algorithms and data structures implementations.

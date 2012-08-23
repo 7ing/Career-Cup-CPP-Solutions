@@ -13,7 +13,7 @@
 #define EX_2_2_H_
 
 #include <iostream>
-#include "..\My Lib\MyList.h"
+#include "../My Lib/MyList.h"
 #include <cstdlib>
 using namespace std;
 
