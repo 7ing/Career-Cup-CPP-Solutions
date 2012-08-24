@@ -35,6 +35,7 @@ public:
 	virtual bool isConnected(T u, T v) = 0;
 	virtual int size() const = 0;
 	virtual void printGraph() const = 0;
+	virtual int ** getGraph() const = 0;
 };
 
 template<class T>
@@ -89,6 +90,7 @@ public:
 	bool isConnected(T u, T v);
 	int size() const;
 	void printGraph() const;
+	int ** getGraph() const;
 private:
 	int _size;
 	list<MyVertex<T> > _vertexes;
@@ -198,8 +200,36 @@ inline int DirectedGraph<T>::size() const {
 
 template<class T>
 inline void DirectedGraph<T>::printGraph() const {
-	int adjacency_matrix[_size][_size];
-	memset(adjacency_matrix, 0, sizeof(adjacency_matrix));
+	int ** matrix = getGraph();
+	typename list<MyVertex<T> >::const_iterator it_v = _vertexes.begin();
+	std::tr1::unordered_map<T, int> vertex_map;
+
+	for (int i = 0; it_v != _vertexes.end(); it_v++, i++) {
+		vertex_map.insert(make_pair(it_v->_data, i));
+	}
+
+	cout << "  ";
+	for (it_v = _vertexes.begin(); it_v != _vertexes.end(); it_v++)
+		cout << it_v->_data << " ";
+	cout << endl;
+	it_v = _vertexes.begin();
+	for (int i = 0; i < _size; i++) {
+		cout << it_v->_data << " ";
+		for (int j = 0; j < _size; j++) {
+			cout << matrix[i][j] << " ";
+		}
+		cout << endl;
+		it_v++;
+	}
+}
+
+template<class T>
+inline int ** DirectedGraph<T>::getGraph() const {
+	int **matrix = new T*[_size];
+	matrix[0] = new T[_size * _size];
+	for (int i = 1; i < _size; i++)
+		matrix[i] = matrix[i - 1] + _size;
+	memset(matrix[0], 0, sizeof(matrix[0]));
 	typename list<MyVertex<T> >::const_iterator it_v = _vertexes.begin();
 	typename list<MyEdge<T> >::const_iterator it_e;
 	std::tr1::unordered_map<T, int> vertex_map;
@@ -211,22 +241,10 @@ inline void DirectedGraph<T>::printGraph() const {
 				it_e++) {
 			int x = vertex_map.find(it_v->_data)->second;
 			int y = vertex_map.find(it_e->_connectsTo->_data)->second;
-			adjacency_matrix[x][y] = 1;
+			matrix[x][y] = 1;
 		}
 	}
-	cout << "  ";
-	for (it_v = _vertexes.begin(); it_v != _vertexes.end(); it_v++)
-		cout << it_v->_data << " ";
-	cout << endl;
-	it_v = _vertexes.begin();
-	for (int i = 0; i < _size; i++) {
-		cout << it_v->_data << " ";
-		for (int j = 0; j < _size; j++) {
-			cout << adjacency_matrix[i][j] << " ";
-		}
-		cout << endl;
-		it_v++;
-	}
+	return matrix;
 }
 
 template<class T>

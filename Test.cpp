@@ -10,7 +10,6 @@
  */
 
 #include "Chapter 4/Ex_4_2.h"
-#include "My Lib/MyGraph.h"
 #include <iostream>
 
 using namespace std;
