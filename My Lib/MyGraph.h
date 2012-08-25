@@ -226,8 +226,8 @@ inline void DirectedGraph<T>::printGraph() const {
 
 template<class T>
 inline int ** DirectedGraph<T>::getGraph() const {
-	int **matrix = new T*[_size];
-	matrix[0] = new T[_size * _size];
+	int **matrix = new int*[_size];
+	matrix[0] = new int[_size * _size];
 	for (int i = 1; i < _size; i++)
 		matrix[i] = matrix[i - 1] + _size;
 	memset(matrix[0], 0, sizeof(matrix[0]));
