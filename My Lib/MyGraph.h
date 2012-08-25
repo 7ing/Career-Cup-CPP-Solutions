@@ -91,6 +91,7 @@ public:
 	int size() const;
 	void printGraph() const;
 	int ** getGraph() const;
+	list<MyVertex<T> > getGraphList();
 private:
 	int _size;
 	list<MyVertex<T> > _vertexes;
@@ -245,6 +246,11 @@ inline int ** DirectedGraph<T>::getGraph() const {
 		}
 	}
 	return matrix;
+}
+
+template<class T>
+inline list<MyVertex<T> > DirectedGraph<T>::getGraphList() {
+	return _vertexes;
 }
 
 template<class T>
