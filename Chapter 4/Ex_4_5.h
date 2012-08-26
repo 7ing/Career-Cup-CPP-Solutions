@@ -20,6 +20,10 @@ using namespace std;
 
 /*
  * in-order successor: O(n) time
+ *
+ * this function is based on binary search tree !
+ * note that: if this is based on binary tree, un-ordered, "else-part" should be:
+ * - find the first parent, that "parent->_left = node;"
  */
 template<class T>
 TreeNode<T> * nextNode(TreeNode<T> * node) {
@@ -35,8 +39,11 @@ TreeNode<T> * nextNode(TreeNode<T> * node) {
 			next = next->_left;
 	} else { // if has no right subtree, find the first larger node in parents
 		next = node->_parent;
-		while(next->_data < node->_data)
+		while(next && next->_data < node->_data) { // depends on the tree definition, could be "<="
 			next = next->_parent;
+			if(!next) // no such parent is found, so node is the right-most node of the tree
+				return NULL;
+		}
 	}
 
 	return next;
@@ -65,9 +72,15 @@ void test() {
 	in_order_print<char>(tree->getRoot());
 	cout<<endl;
 
-	cout<<"B's next node is: "<<nextNode<char>(tree->find('B'))->_data<<endl;
-	cout<<"D's next node is: "<<nextNode<char>(tree->find('D'))->_data<<endl;
-	cout<<"E's next node is: "<<nextNode<char>(tree->find('E'))->_data<<endl;
+	for (int i = 0; i < 10; i++) {
+		TreeNode<char> * node = nextNode<char>(tree->find('A'+i));
+		cout<<char('A'+i)<<"\'s next node is: ";
+		if(node)
+			cout<<node->_data<<endl;
+		else
+			cout<<"NULL"<<endl;
+	}
+
 }
 
 #endif /* EX_4_5_H_ */
