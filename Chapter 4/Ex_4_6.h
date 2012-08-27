@@ -10,7 +10,11 @@
  * in a binary tree. Avoid storing additional nodes in a data structure.
  * NOTE: This is not necessarily a binary search tree.
  *
- * PS: Attempts 2 in the book does't cover a case -- the tree has no such node(s)
+ * PS:
+ * Attempts 2 in the book does't cover a case -- two target nodes are identical, and, root is one of the node
+ * Attempts 3 in the book could not handle the case --- two target nodes are identical
+ *
+ * In this solution, if root is one of the node, return NULL (root's parent)
  */
 
 #ifndef EX_4_6_H_
@@ -73,24 +77,29 @@ TreeNode<T> * findCommonAncestor(TreeNode<T> * root, TreeNode<T> * node1,
 	if (!root)
 		return NULL;
 
-	// in case node1 == node2 : O(n) time
-	if (node1 == node2 && findNode(root, node1))
-		return node1->_parent;
-
-	// if either node1 or node2 is the other node's ancestor: O(n) time
-	if ((root == node1 && findNode(root, node2))
-			|| (root == node2 && findNode(root, node1)))
-		return root->_parent;
-
-	int left = findNodes(root->_left, node1, node2);
-	int right = findNodes(root->_right, node1, node2);
-	// each recursion: O(n) time
-	if (left == 2)
-		return findCommonAncestor(root->_left, node1, node2);
-	else if (right == 2)
-		return findCommonAncestor(root->_right, node1, node2);
-	else if (left == 1 && right == 1)
+	// in case node1 == node2
+	if (node1 == node2 && (root->_left == node1 || root->_right == node1))
 		return root;
+
+	int left = findNodes(root->_left, node1, node2); // if node1 == node2, left = 2
+	if (left == 2) {
+		if (root->_left == node1 || root->_left == node2)
+			return root;
+		else
+			return findCommonAncestor(root->_left, node1, node2);
+	}
+
+	int right = findNodes(root->_right, node1, node2); // if node2 == node1, right = 2
+	if (right == 2) {
+		if (root->_right == node1 || root->_right == node2)
+			return root;
+		else
+			return findCommonAncestor(root->_right, node1, node2);
+	}
+
+	if (left == 1 && right == 1) {
+		return root;
+	}
 
 	return NULL;
 }
@@ -104,7 +113,9 @@ int findNodes(TreeNode<T> * root, TreeNode<T> * node1, TreeNode<T> * node2) {
 	if (!root)
 		return 0;
 	int num = 0;
-	if (root == node1 || root == node2)
+	if (root == node1)
+		num++;
+	if (root == node2) // in case node1 == node2
 		num++;
 	num += findNodes(root->_left, node1, node2);
 	if (num == 2)
