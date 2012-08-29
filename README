@@ -4,10 +4,17 @@
 Git: https://github.com/mitkook/Career-Cup-CPP-Solutions.wiki.git
 
 This project try to implement career cup 150 (ver. 4.0) exercises using C++. 
+It will provides several well-known algorithms and data structures implementations.
 
 IDE: Eclipse 
-Default Compiler: LinuxGCC , GNU's g++
+Default Compiler: Linux GCC , GNU's g++
 
-NOTE: Please configure your own "gcc include" path before compiling this project. 
-
-It also provides several well-known algorithms and data structures implementations.
+NOTE: Please configure your compiler and "gcc include" path before compiling this project.
+1. right-click your project name
+2. select 'Properties' (normally is last one)
+3. C/C++ Build -> Tool Chain Editor : 
+   Current toolchain: (select your own compiler, we use Linux GCC)
+   Current builder: GNU Make Builder
+4. Make sure your gcc library path is correct:
+   C/C++ General -> Paths and Symbols -> GNU C++
+5. Done.
