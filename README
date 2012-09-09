@@ -3,7 +3,7 @@
 
 Git: https://github.com/mitkook/Career-Cup-CPP-Solutions.wiki.git
 
-This project try to implement career cup 150 (ver. 4.0) exercises using C++. 
+This project try to implement career cup 150 (ver. 4.0) exercises using C++. However, it would not cover Chapter 6 & 7.
 It will provides several well-known algorithms and data structures implementations.
 
 IDE: Eclipse 
