@@ -9,7 +9,7 @@
  * include "Chapter X/Ex_X_Y.h" to test Exercise X.Y in Career Cup 4.0 Version
  */
 
-#include "Chapter 8/Ex_8_6.h"
+#include "Chapter 8/Ex_8_7.h"
 #include <iostream>
 
 using namespace std;
