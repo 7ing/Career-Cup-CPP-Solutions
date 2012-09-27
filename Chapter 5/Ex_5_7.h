@@ -30,7 +30,7 @@ bool getBit(int *array, int i, int column) {
  * idea: in each column of remain binary numbers, holds:
  * 1) if 0 is removed, # of 1's >= # of 0's
  * 2) if 1 is removed, # of 1's < # of 0's
- * then remove all binary numbers, that least significant bit is not removed bit
+ * then remove all binary numbers that least significant bit is not removed bit
  */
 int findMissingInt(int *array, int n, int column) {
 	if (column < 0 || column > 31) { // Base case and error condition

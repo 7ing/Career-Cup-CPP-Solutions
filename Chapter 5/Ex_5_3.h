@@ -32,11 +32,11 @@ int setBit(int num, int pos, bool value) {
 /*
  * Note: only work for positive number
  *
- * 1.	 Traverse from right to left. Once we’ve passed a 1, turn on the next 0. We’ve now increased
+ * 1.	 Traverse from right to left. Once we have passed a 1, turn on the next 0. We have now increased
  *       the number by 2^i. Yikes! Example: xxxxx011100 becomes xxxxx111100
- * 2.	 Set all the one to zero that’s to the right side of that. Remember the number of 1s to be turned.
+ * 2.	 Set all the one to zero that is to the right side of that. Remember the number of 1s to be turned.
  * 		 Example: xxxxx111100 becomes xxxxx100000 turned# = 3.
- * 3.	 Make the lowest turned#-1 position to be 1:
+ * 3.	 Make the lowest (turned# - 1) position to be 1:
  * 		 Example: xxxxx100000 becomes xxxxx100011
  */
 int getNext(int num) {
@@ -75,7 +75,7 @@ int getNext(int num) {
 /*
  * Note: only work for positive number
  *
- * 1.	 Traverse from right to left. Once we’ve passed a zero, turn off the next 1.
+ * 1.	 Traverse from right to left. Once we have passed a zero, turn off the next 1.
  * 		 Example: xxxxx100011 becomes xxxxx000011.
  * 2.	 Turn on the 0 that is directly to the right.
  * 		 Example: xxxxx000011 becomes xxxxx010011.
