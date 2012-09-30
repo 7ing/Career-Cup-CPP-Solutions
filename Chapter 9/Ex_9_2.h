@@ -34,32 +34,12 @@ string sort_string(string str) {
 	return string(s);
 }
 
-// alphabetic order
-bool isLarger(string a, string b) {
-	unsigned int i = 0;
-	unsigned int size = a.size();
-	if (size > b.size())
-		size = b.size();
-	while (i < size) {
-		if (a[i] > b[i])
-			return true;
-		else if (a[i] < b[i])
-			return false;
-		else
-			i++;
-	}
-
-	if (a.size() > b.size())
-		return true;
-	else
-		return false;
-}
 
 // using insertion sort to sort the array
 void sort(string str[], int n) {
 	for (int i = 0; i < n; i++) {
 		for (int j = i + 1; j < n; j++) {
-			if (isLarger(sort_string(str[i]),sort_string(str[j])))
+			if (sort_string(str[i])>sort_string(str[j])) // alphabetic order
 				str[i].swap(str[j]);
 		}
 	}
