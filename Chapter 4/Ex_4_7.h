@@ -12,8 +12,8 @@
 
 /*
  * Discuss: using suffix tree to verify substring --> will consume too much memory space
- * We could create a string representing the in-order and pre-order traversals. If T2’s pre-order traversal
- * is a substring of T1’s pre-order traversal, and T2’s in-order traversal is a substring of T1’s in-order traversal,
+ * We could create a string representing the in-order and pre-order traversals. If T2's pre-order traversal
+ * is a substring of T1's pre-order traversal, and T2's in-order traversal is a substring of T1's in-order traversal,
  * then T2 is a substring of T1
  */
 

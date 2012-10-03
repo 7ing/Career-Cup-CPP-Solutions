@@ -350,7 +350,7 @@ void bitmap_sort(int a[], int n) {
 	for (int i = 0; i < n; i++) {
 		//set corresponding bit to 1
 		offset = a[i] - min;
-		pBuffer[offset / 8] = pBuffer[offset / 8] | (0x01 << (offset % 8));
+		pBuffer[offset / 8] |= (0x01 << (offset % 8));
 	}
 
 	// sorting
