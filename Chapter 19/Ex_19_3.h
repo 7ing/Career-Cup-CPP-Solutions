@@ -8,7 +8,6 @@
 /*
  * Write an algorithm which computes the number of trailing zeros in n factorial.
  *
- * aka., count how many 0 in n!
  */
 
 #ifndef EX_19_3_H_

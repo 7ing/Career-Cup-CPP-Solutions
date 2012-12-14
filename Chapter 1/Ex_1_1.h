@@ -30,10 +30,10 @@ void quick_sort_func(char * string, int left, int right, bool &flag);
 bool is_unique_char_func_1(char * string) {
 
 	bool result = true;
-	char * temp = new char[strlen(string)];
+	char * temp = new char[strlen(string) + 1]; // + 1 is to avoid heap overflow
 	strcpy(temp, string);
 	if (!temp) {
-		cout << "Not Enough Memory\n";
+		cerr << "Not Enough Memory\n";
 		exit(1);
 	}
 

@@ -17,8 +17,8 @@ using namespace std;
 
 /*
  * O(n) time, O(1) space
- * this method will have heap overflow problem!
- * to address this issues, simply allocate new memory to the string
+ * this method may cause heap overflow!
+ * to address this issue, simply allocates new memory to the string
  */
 void space_to_unicode_func(char * str) {
 
