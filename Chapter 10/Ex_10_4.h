@@ -67,7 +67,8 @@ void test() {
 	cout<<INT_divide(10,-5)<<endl;
 	cout<<INT_divide(10,0)<<endl;
 
-	cout<<endl<<"11 more test cases:"<<endl;
+
+	cout<<endl<<"12 more test cases:"<<endl;
 	cout<<"(-2147483648)/(-2147483647) = "<<INT_divide(-2147483648,-2147483647)<<"\t(should be 1)"<<endl;
 	cout<<"(-2147483648)/(2147483647) = "<<INT_divide(-2147483648,2147483647)<<"\t(should be -1)"<<endl;
 	cout<<"2147483647/2147483647 = "<<INT_divide(2147483647,2147483647)<<"\t(correct)"<<endl;
@@ -77,12 +78,12 @@ void test() {
 	cout<<"(-2147483647)/214748364 = "<<INT_divide(-2147483647,214748364)<<"\t(correct)"<<endl;
 	cout<<"(-2147483648)/1 = "<<INT_divide(-2147483648,1)<<"\t\t(should be -2147483648)"<<endl;
 
-	cout<<endl<<"calculating 2147483647/2"<<endl;
+	cout<<endl<<"Calculating 2147483647/2, please wait a few seconds. \nO(lg n) complexity to avoid this problem."<<endl;
 	cout<<"2147483647/2 = "<<INT_divide(2147483647,2)<<"\t(correct, but an error message may be generated)"<<endl;
-	cout<<endl<<"There are two more test cases still running:\n(2147483647)/(-2147483648) and (-2147483648)/(-2147483648)"<<endl;
+	cout<<endl<<"The following 3 test cases may encounter dead loops:\n(2147483647)/(-2147483648)\n(-2147483648)/(-2147483648)\n0/(-2147483648)"<<endl;
 	cout<<"(2147483647)/(-2147483648) = "<<INT_divide(2147483647,-2147483648)<<"\t(should be 0)"<<endl;
 	cout<<"(-2147483648)/(-2147483648) = "<<INT_divide(-2147483648,-2147483648)<<"\t\t(should be 1)"<<endl;
-
+	cout<<"0/(-2147483648) = "<<INT_divide(0,-2147483648)<<"\t(dead loop)"<<endl;
 }
 
 #endif /* EX_10_4_H_ */
