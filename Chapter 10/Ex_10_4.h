@@ -65,8 +65,7 @@ void test() {
 	cout<<INT_multiply(10,0)<<endl;
 	cout<<INT_divide(10,5)<<endl;
 	cout<<INT_divide(10,-5)<<endl;
-	cout<<INT_divide(10,0)<<endl;
-
+	cout<<INT_divide(10,0)<<endl;//"cerr" uses no buffer, therefore it may be printed before or after "cout".
 
 	cout<<endl<<"12 more test cases from Bo:"<<endl;
 	cout<<"(-2147483648)/(-2147483647) = "<<INT_divide(-2147483648,-2147483647)<<"\t(should be 1)"<<endl;
@@ -75,11 +74,11 @@ void test() {
 	cout<<"(-2147483648)/(-1) = "<<INT_divide(-2147483648,-1)<<"\t\t(overflow, INT_MIN/(-1) = INT_MAX+1)"<<endl;
 	cout<<"(-2147483648)/2 = "<<INT_divide(-2147483648,2)<<"\t\t(should be -1073741824)"<<endl;
 	cout<<"(-2147483648)/(-3) = "<<INT_divide(-2147483648,-3)<<"\t\t(should be 715827882)"<<endl;
-	cout<<"(-2147483647)/214748364 = "<<INT_divide(-2147483647,214748364)<<"\t(correct)"<<endl;
+	cout<<"(-2147483647)/(-214748364) = "<<INT_divide(-2147483647,-214748364)<<"\t(correct)"<<endl;
 	cout<<"(-2147483648)/1 = "<<INT_divide(-2147483648,1)<<"\t\t(should be -2147483648)"<<endl;
 
-	cout<<endl<<"Calculating 2147483647/2, please wait. \nO(lg n) complexity to reduce time cost."<<endl;
-	cout<<"2147483647/2 = "<<INT_divide(2147483647,2)<<"\t(correct, but an error message may be generated)"<<endl;
+	cout<<endl<<"Calculating 2147483647/2, please wait. \nTry O(lg n) complexity to reduce time cost."<<endl;
+	cout<<"2147483647/2 = "<<INT_divide(2147483647,2)<<"\t(correct)"<<endl;
 	cout<<endl<<"The following 3 test cases may encounter dead loops:"<<endl;
 	cout<<"(2147483647)/(-2147483648)\n(-2147483648)/(-2147483648)\n0/(-2147483648)"<<endl;
 	cout<<"(2147483647)/(-2147483648) = "<<INT_divide(2147483647,-2147483648)<<endl;
