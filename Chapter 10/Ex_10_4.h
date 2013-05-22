@@ -42,6 +42,7 @@ int INT_multiply(int a, int b) {
  * you hit 0. */
 int INT_divide(int a, int b) {
 	if (b == 0) {
+		//"cerr" uses no buffer, therefore it may be printed before or after "cout".
 		cerr << "ERROR: Divide by zero." << endl;
 		return 0;
 	}
@@ -65,7 +66,7 @@ void test() {
 	cout<<INT_multiply(10,0)<<endl;
 	cout<<INT_divide(10,5)<<endl;
 	cout<<INT_divide(10,-5)<<endl;
-	cout<<INT_divide(10,0)<<endl;//"cerr" uses no buffer, therefore it may be printed before or after "cout".
+	cout<<INT_divide(10,0)<<endl;//"cerr" is called and may be printed before or after "cout".
 
 	cout<<endl<<"12 more test cases from Bo:"<<endl;
 	cout<<"(-2147483648)/(-2147483647) = "<<INT_divide(-2147483648,-2147483647)<<"\t(should be 1)"<<endl;
