@@ -68,7 +68,7 @@ void test() {
 	cout<<INT_divide(10,0)<<endl;
 
 
-	cout<<endl<<"12 more test cases:"<<endl;
+	cout<<endl<<"12 more test cases from Bo:"<<endl;
 	cout<<"(-2147483648)/(-2147483647) = "<<INT_divide(-2147483648,-2147483647)<<"\t(should be 1)"<<endl;
 	cout<<"(-2147483648)/(2147483647) = "<<INT_divide(-2147483648,2147483647)<<"\t(should be -1)"<<endl;
 	cout<<"2147483647/2147483647 = "<<INT_divide(2147483647,2147483647)<<"\t(correct)"<<endl;
