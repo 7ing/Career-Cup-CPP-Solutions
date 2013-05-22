@@ -14,12 +14,12 @@
 template<class T>
 class MyHeap {
 public:
-	~MyHeap();
+	virtual ~MyHeap();
 	virtual bool isEmpty() = 0;
 	virtual bool find(T data) = 0;
 	virtual void push_heap(T data) = 0;
 	virtual T pop_heap() = 0;
-	virtual void make_heap(vector<T> & v) = 0;
+	virtual void make_heap(std::vector<T> & v) = 0;
 protected:
 	void swap(T & x, T & y);
 };

@@ -114,7 +114,7 @@ inline void DirectedGraph<T>::addVertex(T label) {
 		_vertexes.push_back(*mv);
 		_size++;
 	} else
-		cout << "Vertex \'" << label << "\' already exists." << endl;
+		cout << "Vertex \'" << label << "\' already exists.\n";
 }
 
 template<class T>

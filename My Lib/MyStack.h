@@ -19,7 +19,7 @@
 template<class T>
 struct MyStackNode {
 	MyStackNode(T data) :
-		_data(data), _next(NULL) {
+			_data(data), _next(NULL) {
 	}
 	T _data;
 	MyStackNode * _next;
@@ -44,11 +44,11 @@ MyStack<T>::~MyStack<T>() {
 template<class T>
 class MyLinkedListStack: public MyStack<T> {
 public:
-	MyLinkedListStack<T> () {
+	MyLinkedListStack<T>() {
 		_top = NULL;
 		_size = 0;
 	}
-	~MyLinkedListStack<T> ();
+	~MyLinkedListStack<T>();
 	bool empty() const {
 		return _size == 0;
 	}
@@ -66,7 +66,7 @@ private:
 
 template<class T>
 MyLinkedListStack<T>::~MyLinkedListStack<T>() {
-	MyStackNode<T> *p;
+	MyStackNode < T > *p;
 	while (_top) {
 		p = _top;
 		_top = _top->_next;
@@ -87,7 +87,7 @@ const T& MyLinkedListStack<T>::top() const {
 
 template<class T>
 void MyLinkedListStack<T>::push(const T& data) {
-	MyStackNode<T> *node = new MyStackNode<T> (data);
+	MyStackNode<T> *node = new MyStackNode<T>(data);
 	if (!node)
 		return;
 	node->_next = _top;
@@ -111,15 +111,17 @@ void MyLinkedListStack<T>::pop() {
 template<class T>
 class MyArrayStack: public MyStack<T> {
 public:
-	MyArrayStack<T> () {
-		new (this)MyArrayStack<T>(30);
+	MyArrayStack<T>() {
+		STACKSIZE = 30;
+		_stack = new T[STACKSIZE];
+		_top = NULL;
 	}
-	MyArrayStack<T> (int size) {
+	MyArrayStack<T>(int size) {
 		STACKSIZE = size;
 		_stack = new T[STACKSIZE];
 		_top = NULL;
 	}
-	~MyArrayStack<T> ();
+	~MyArrayStack<T>();
 	bool empty() const {
 		return _top == NULL;
 	}

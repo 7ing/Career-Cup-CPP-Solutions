@@ -133,7 +133,8 @@ void SetOfStacks<T>::popAt(int index) {
 	while(index--) {
 		it++;
 	}
-	cout<<(*it).top()<<endl;
+	cout<<(*it).top();
+	cout<<endl;
 	(*it).pop();
 	if((*it).empty()) {
 		_stacks.erase(it);

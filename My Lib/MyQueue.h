@@ -131,6 +131,7 @@ public:
 		_head = NULL;
 		_tail = NULL;
 		QUEUESIZE = 10;
+		_queue = NULL;
 	}
 	MyArrayQueue<T> (int size) {
 		_head = NULL;

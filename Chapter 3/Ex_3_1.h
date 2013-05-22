@@ -26,10 +26,14 @@ using namespace std;
 template<class T>
 class ThreeStacks {
 public:
-	ThreeStacks<T> () {
-		new (this) ThreeStacks<T> (30);
+	ThreeStacks<T>() {
+		ARRAYSIZE = 30;
+		_array = new T[ARRAYSIZE];
+		_stack[0] = NULL;
+		_stack[1] = NULL;
+		_stack[2] = NULL;
 	}
-	ThreeStacks<T> (int size) {
+	ThreeStacks<T>(int size) {
 		ARRAYSIZE = size;
 		_array = new T[ARRAYSIZE];
 		_stack[0] = NULL;
@@ -78,7 +82,8 @@ void ThreeStacks<T>::push(int stack_num, const T& data) {
 	if (_stack[stack_num] == NULL) {
 		_stack[stack_num] = _array + stack_num * ARRAYSIZE / 3;
 		*_stack[stack_num] = data;
-	} else if (_stack[stack_num] < _array + (stack_num + 1) * ARRAYSIZE / 3 - 1) {
+	} else if (_stack[stack_num]
+			< _array + (stack_num + 1) * ARRAYSIZE / 3 - 1) {
 		*(++_stack[stack_num]) = data;
 	} else {
 		cout << " Stack Overflow!" << endl;
@@ -101,10 +106,10 @@ void ThreeStacks<T>::pop(int stack_num) {
 template<class T>
 struct StackNode {
 	StackNode() :
-		_data(0), _next(NULL) {
+			_data(0), _next(NULL) {
 	}
 	StackNode(T data) :
-		_data(data), _next(NULL) {
+			_data(data), _next(NULL) {
 	}
 	T _data;
 	StackNode<T> * _next;
@@ -113,11 +118,15 @@ struct StackNode {
 template<class T>
 class ThreeFlexStacks {
 public:
-	ThreeFlexStacks<T> () {
-		new (this)ThreeFlexStacks<T> (30);
+	ThreeFlexStacks<T>() {
+		_size = 30;
+		_array = new StackNode<T> [30];
+		_stack[0] = NULL;
+		_stack[1] = NULL;
+		_stack[2] = NULL;
 	}
-	ThreeFlexStacks<T> (int size) :
-		_size(size) {
+	ThreeFlexStacks<T>(int size) :
+			_size(size) {
 		_array = new StackNode<T> [size];
 		_stack[0] = NULL;
 		_stack[1] = NULL;
@@ -191,13 +200,13 @@ void ThreeFlexStacks<T>::pop(int stack_num) {
 		_stack[stack_num] = _stack[stack_num]->_next;
 		_free.push_front(free_node);
 	} else {
-		cout<<"Stack Underflow!"<<endl;
+		cout << "Stack Underflow!" << endl;
 	}
 }
 
 void test() {
 
-	ThreeFlexStacks<int> *ts = new ThreeFlexStacks<int> ();
+	ThreeFlexStacks<int> *ts = new ThreeFlexStacks<int>();
 	ts->push(2, 4);
 	cout << ts->top(2) << endl;
 	ts->push(1, 3);
