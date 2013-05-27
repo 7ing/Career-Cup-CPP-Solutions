@@ -75,8 +75,17 @@ void test() {
 	D._next = &E;
 	E._next = &F;
 	F._next = &C;
-
 	cout << "A->B->C->D->E->F->C" << endl;
+	cout << find_loop_func(&A)->_data << endl;
+
+	//test cases added by Bo:
+	A._next = &B;
+	B._next = &A;
+	cout <<endl<< "A->B->A" << endl;
+	cout << find_loop_func(&A)->_data << endl;
+
+	A._next = &A;
+	cout << endl << "A->A" << endl;
 	cout << find_loop_func(&A)->_data << endl;
 
 }
