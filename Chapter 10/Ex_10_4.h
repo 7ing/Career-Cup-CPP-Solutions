@@ -125,6 +125,9 @@ void test() {
 	//cout<<"(2147483647)/(-2147483648) = "<<INT_divide(2147483647,-2147483648)<<endl;
 	//cout<<"(-2147483648)/(-2147483648) = "<<INT_divide(-2147483648,-2147483648)<<endl;
 	//cout<<"0/(-2147483648) = "<<INT_divide(0,-2147483648)<<endl;
+
+	//test cases from Lei Zeng
+	cout<<"\n1/1 = "<<INT_divide(1,1)<<endl;
 }
 
 #endif /* EX_10_4_H_ */
