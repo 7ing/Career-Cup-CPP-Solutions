@@ -128,6 +128,7 @@ void test() {
 
 	//test cases from Lei Zeng
 	cout<<"\n1/1 = "<<INT_divide(1,1)<<endl;
+	cout<<"\n5/1 = "<<INT_divide(1,1)<<endl;
 }
 
 #endif /* EX_10_4_H_ */
