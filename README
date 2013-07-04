@@ -19,7 +19,7 @@ NOTE: Please configure your compiler and "gcc include" path before compiling thi
    Current builder: GNU Make Builder
 4. Make sure your gcc library path is correct:
    C/C++ General -> Paths and Symbols -> GNU C++ (e.g., ..\MinGW\lib\gcc\mingw32\4.6.2\include\c++)
-5. Done.
+5. Done. 
 
 PS: For C++11 (gcc 4.7.x) user: right-click the project and go to "Properties"
 1. C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler -> Miscellaneous -> Other Flags. Put "-std=c++0x" at the end
