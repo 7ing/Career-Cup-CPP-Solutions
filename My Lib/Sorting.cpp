@@ -214,7 +214,7 @@ void quick_sort2(int a[], int left, int right) {
  * elements, etc.
  */
 
-// merge two sorted arrays
+// O(n) merge two sorted arrays
 int * merge(int left[], int x, int right[], int y) {
 	int *result = new int[x + y];
 	int i = 0, j = 0, k = 0;
@@ -232,6 +232,7 @@ int * merge(int left[], int x, int right[], int y) {
 	return result;
 }
 
+// O(logn)
 void merge_sort(int *a, int n) {
 	if (n <= 1) // base case
 		return;
