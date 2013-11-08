@@ -29,7 +29,7 @@ TreeNode<T> * orderedArrayToTree(TreeNode<T> * parent, int * array, int from,
 	if (from > to)
 		return NULL;
 	else {
-		int mid = (from + to) / 2;
+		int mid = from + (to - from) / 2;  // avoid integer overflow
 		TreeNode<T> * node = new TreeNode<T>(array[mid]);
 		node->_parent = parent;
 		node->_left = orderedArrayToTree(node, array, from, mid - 1);
